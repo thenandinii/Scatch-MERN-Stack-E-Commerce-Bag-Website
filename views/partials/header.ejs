@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<nav class="w-full sticky top-0 z-50 px-6 py-4 backdrop-blur-md bg-white/30 border-b border-white/20 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    
+    <!-- 🔷 Brand -->
+    <h3 class="text-2xl font-bold text-black tracking-wide">Scatch</h3>
+
+    <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+    <% if (loggedin) { %>
+      <!-- 🔷 Nav Links -->
+      <div class="hidden md:flex gap-6 items-center text-white font-medium">
+        <a href="/shop" class="hover:text-blue-300 transition">Shop</a>
+        <a href="/cart" class="hover:text-blue-300 transition">Cart</a>
+        <a href="/account" class="hover:text-blue-300 transition">My Account</a>
+        <a href="/user/logout" class="text-red-300 hover:text-red-500 transition">Logout</a>
+      </div>
+
+      <!-- 🔷 Hamburger for mobile (optional) -->
+      <div class="md:hidden">
+        <button id="menuToggle" class="text-white text-2xl">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- 🔷 Mobile Menu -->
+  <% if (loggedin) { %>
+  <div id="mobileMenu" class="md:hidden hidden flex-col mt-2 px-4 space-y-2 text-white text-sm">
+    <a href="/shop" class="hover:text-blue-300">Shop</a>
+    <a href="/cart" class="hover:text-blue-300">Cart</a>
+    <a href="/account" class="hover:text-blue-300">My Account</a>
+    <a href="/user/logout" class="text-red-300 hover:text-red-500">Logout</a>
+  </div>
+  <% } %>
+</nav>
+
+<script>
+  const toggleBtn = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
+  toggleBtn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
